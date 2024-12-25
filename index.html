@@ -1,11 +1,75 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hello world</h1>
-    <h3>you can add your website code here!! whatever you want.</h3>
-</body>
-</html>
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Code Context Logs</title>
+            <style>
+                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+                th { background-color: #f2f2f2; position: sticky; top: 0; }
+                input[type="text"] { width: 100%; padding: 12px; margin: 8px 0; box-sizing: border-box; }
+                .search-container { margin-bottom: 10px; }
+            </style>
+        </head>
+        <body>
+            <h1>Code Context Logs</h1>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search logs..." onkeyup="filterLogs()">
+            </div>
+
+            <!-- Log Table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>File</th>
+                        <th>Function</th>
+                        <th>Chars Typed</th>
+                        <th>Chars Deleted</th>
+                        <th>Words Added</th>
+                        <th>Words Deleted</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="code-context-logs-table">
+        <tr>
+            <td>advocare</td>
+            <td>d:\githubfile\advocare\src\pages\Homepage.jsx</td>
+            <td>tag</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0 </td>
+            <td>12/26/2024</td>
+        </tr>
+    
+
+                    <!-- LOGS -->
+                </tbody>
+            </table>
+
+            <script>
+                function filterLogs() {
+                    let input = document.getElementById("searchInput");
+                    let filter = input.value.toLowerCase();
+                    let table = document.getElementById("code-context-logs-table");
+                    let rows = table.getElementsByTagName("tr");
+
+                    for (let i = 0; i < rows.length; i++) {
+                        let row = rows[i];
+                        let text = row.textContent || row.innerText;
+                        if (text.toLowerCase().includes(filter)) {
+                            row.style.display = "";
+                        } else {
+                            row.style.display = "none";
+                        }
+                    }
+                }
+            </script>
+        </body>
+        </html>
+    
